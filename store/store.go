@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/sikozonpc/fullstackgo/types"
+	"github.com/xxii22w/fullstackgo/types"
 )
 
 var ErrorNotFound = errors.New("Record Not Found")

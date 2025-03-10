@@ -4,4 +4,4 @@
 air # for the go server live reloading
 make tailwind # for the tailwindcss live reloading
 make templ # for the templ files live generation and reloading
-```
+```依赖

@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/sikozonpc/fullstackgo/store"
+	"github.com/xxii22w/fullstackgo/store"
 )
 
 type Handler struct {

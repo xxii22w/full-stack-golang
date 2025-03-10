@@ -1,4 +1,4 @@
-module github.com/sikozonpc/fullstackgo
+module github.com/xxii22w/fullstackgo
 
 go 1.23
 

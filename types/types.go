@@ -9,3 +9,4 @@ type Car struct {
 	ImageURL  string `json:"imageURL"`
 	CreatedAt string `json:"createdAt"`
 }
+

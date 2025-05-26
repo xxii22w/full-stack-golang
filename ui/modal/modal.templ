@@ -1,0 +1,41 @@
+package modal
+
+import "github.com/xxii22w/fullstackgo/ui"
+
+const (
+    ModalBaseClass = "relative bg-white rounded-lg shadow-sm dark:bg-gray-700"
+    ModalHeaderClass = "flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200"
+    ModalBodyClass = "p-4 md:p-5 space-y-4"
+    ModalFooterClass = "flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+)
+
+templ Modal(opts ...func(*templ.Attributes)) {
+        <!-- Modal content -->
+        <div {ui.CreateAttrs(ModalBaseClass,"",opts...)...}>
+            {children...}
+        </div>
+
+}
+
+templ Header(opts ...func(*templ.Attributes)) {
+    <!-- Modal header -->
+        <div {ui.CreateAttrs(ModalHeaderClass,"",opts...)...}>
+            {children...}
+        </div>
+}
+
+templ Body(opts ...func(*templ.Attributes)) {
+    <!-- Modal body -->
+    <div {ui.CreateAttrs(ModalBodyClass,"",opts...)...}>
+        {children...}
+    </div>
+}
+
+templ Footer(opts ...func(*templ.Attributes)) {
+    
+    <!-- Modal footer -->
+    <div {ui.CreateAttrs(ModalFooterClass,"",opts...)...}>
+        {children...}
+    </div>
+}
+

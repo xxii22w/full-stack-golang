@@ -1,7 +1,10 @@
+include .env
+MIGRATIONS_PATH = ./cmd/migrate/migrations
+
 build:
 	tailwindcss -i views/css/styles.css -o public/styles.css
 	@templ generate view
-	@go build -o bin/fullstackgo main.go 
+	@go build -o bin/fullstackgo cmd/main.go 
 
 test:
 	@go test -v ./...
@@ -15,11 +18,14 @@ tailwind:
 templ:
 	@templ generate -watch -proxy=http://localhost:8080
 
-migration: # add migration name at the end (ex: make migration create-cars-table)
-	@migrate create -ext sql -dir cmd/migrate/migrations $(filter-out $@,$(MAKECMDGOALS))
+.PHONY: migrate-create
+migration:
+	@migrate create -seq -ext sql -dir $(MIGRATIONS_PATH) $(filter-out $@,$(MAKECMDGOALS))
 
+.PHONY: migrate-up
 migrate-up:
-	@go run cmd/migrate/main.go up
+	@migrate -path=$(MIGRATIONS_PATH) -database=$(DB_ADDR) up
 
+.PHONY: migrate-down
 migrate-down:
-	@go run cmd/migrate/main.go down
+	@migrate -path=$(MIGRATIONS_PATH) -database=$(DB_ADDR) down $(filter-out $@,$(MAKECMDGOALS))

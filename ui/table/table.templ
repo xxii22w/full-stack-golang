@@ -1,0 +1,47 @@
+package table
+
+import "github.com/xxii22w/fullstackgo/ui"
+
+
+templ Table() {
+	<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+		<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+			{children...}
+		</table>
+	</div>
+}
+
+templ Header(opts ...func(*templ.Attributes)) {
+	<thead { ui.CreateAttrs("text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400", "", opts...)... }>
+		<tr>
+			{ children... }
+		</tr>
+	</thead>
+}
+
+templ Body(opts ...func(*templ.Attributes)) {
+	<tbody { ui.CreateAttrs("divide-y", "", opts...)... }>
+		{ children... }
+	</tbody>
+}
+
+templ Footer(opts ...func(*templ.Attributes)) {
+	<tfoot>
+		<tr>
+			{ children... }
+		</tr>
+	</tfoot>
+}
+
+const (
+	thBaseClass = "px-5 py-3 text-xs font-medium uppercase"
+	tdBaseClass = "px-5 py-4 text-sm whitespace-nowrap"
+)
+
+func Td(opts ...func(*templ.Attributes)) templ.Attributes {
+	return ui.CreateAttrs(tdBaseClass, "", opts...)
+}
+
+func Th(opts ...func(*templ.Attributes)) templ.Attributes {
+	return ui.CreateAttrs(thBaseClass, "", opts...)
+}

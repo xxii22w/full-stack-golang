@@ -7,5 +7,5 @@ import (
 )
 
 func (h *Handler) HandleHome(w http.ResponseWriter, r *http.Request) {
-	views.Home().Render(r.Context(), w)
+	views.Index().Render(r.Context(), w)
 }

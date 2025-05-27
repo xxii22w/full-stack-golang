@@ -4,11 +4,13 @@ import (
 	"time"
 
 	"github.com/xxii22w/fullstackgo/internal/auth"
+	"github.com/xxii22w/fullstackgo/internal/store"
 	"go.uber.org/zap"
 )
 
 type application struct {
 	config        Config
+	store         store.Storage
 	authenticator auth.Authenticator
 	logger        *zap.SugaredLogger
 }
